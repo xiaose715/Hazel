@@ -35,6 +35,8 @@ namespace Hazel {
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		
+		if (event.handled)
+			return;
 		for (auto it = m_layerStack.end(); it != m_layerStack.begin();) {
 			(*--it)->OnEvent(event);
 			if(event.handled)
