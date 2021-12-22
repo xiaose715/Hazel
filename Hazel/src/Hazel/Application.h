@@ -2,6 +2,8 @@
 
 #include "Core.h"
 #include "Window.h"
+#include "Hazel/Events/Event.h"
+#include "Hazel/Events/ApplicationEvent.h"
 
 namespace Hazel {
 
@@ -10,9 +12,14 @@ namespace Hazel {
 	public:
 		virtual ~Application();
 		Application();
+
+		void OnEvent(Event&);
+
 		void Run();
 	private:
-		std::unique_ptr<Window> m_Window;
+		bool OnWindowClose(WindowCloseEvent& e);
+
+		std::unique_ptr<Window> m_window;
 		bool m_runing;
 	};
 
