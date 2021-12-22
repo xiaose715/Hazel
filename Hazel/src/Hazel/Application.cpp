@@ -16,17 +16,33 @@ namespace Hazel {
 	
 	}
 
+	void Application::PushLayer(Layer* layer) {
+		m_layerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* overlay) {
+		m_layerStack.PushOverlay(overlay);
+	}
+
 	void Application::OnEvent(Event& event) {
 		EventDispatcher dispatcher(event);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
-
-		HZ_CORE_TRACE("{0}", event);
+		
+		for (auto it = m_layerStack.end(); it != m_layerStack.begin();) {
+			(*--it)->OnEvent(event);
+			if(event.handled)
+				break;
+		}
 	}
 
 	void Application::Run() {
 		glClearColor(1, 0, 1, 1);
 		while (m_runing) {
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : m_layerStack)
+				layer->OnUpdate();
+
 			m_window->OnUpdate();
 		}
 	}

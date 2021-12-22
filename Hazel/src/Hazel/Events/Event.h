@@ -34,8 +34,9 @@ namespace Hazel {
 
 	class HAZEL_API Event 
 	{
-		friend class EventDispatcher;
 	public:
+		bool handled = false;
+
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
@@ -46,8 +47,6 @@ namespace Hazel {
 		inline bool IsInCategory(EventCategory category) {
 			return GetCategoryFlags() & category;
 		}
-	protected:
-		bool m_handled = false;
 	};
 
 	class HAZEL_API EventDispatcher 
@@ -62,7 +61,7 @@ namespace Hazel {
 		bool Dispatch(EventFn<T> func) {
 			if (m_event.GetEventType() == T::GetStaticType())
 			{
-				m_event.m_handled = func(*(T*)&m_event);
+				m_event.handled = func(*(T*)&m_event);
 				return true;
 			}
 			return false;
