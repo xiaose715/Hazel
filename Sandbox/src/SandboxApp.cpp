@@ -1,4 +1,5 @@
 #include <Hazel.h>
+#include <imgui/imgui.h>
 
 class ExampleLayer : public Hazel::Layer
 {
@@ -14,6 +15,12 @@ public:
 		}
 	}
 
+	virtual void OnImGuiRender() override {
+		ImGui::Begin("Example");
+		ImGui::Text("Test");
+		ImGui::End();
+	}
+
 	void OnEvent(Hazel::Event& event) override {
 
 	}
@@ -25,7 +32,6 @@ class Sandbox : public Hazel::Application
 public:
 	Sandbox() {
 		PushLayer(new ExampleLayer());
-		PushOverlay(new Hazel::ImGuiLayer());
 	}
 
 	~Sandbox() {
