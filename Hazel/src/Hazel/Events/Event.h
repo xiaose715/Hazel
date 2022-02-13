@@ -4,7 +4,8 @@
 
 #include "Hazel/Core.h"
 
-namespace Hazel {
+namespace Hazel 
+{
 	
 	enum class EventType 
 	{
@@ -40,11 +41,13 @@ namespace Hazel {
 		virtual EventType GetEventType() const = 0;
 		virtual const char* GetName() const = 0;
 		virtual int GetCategoryFlags() const = 0;
-		virtual std::string ToString() const {
+		virtual std::string ToString() const 
+		{
 			return GetName();
 		}
 
-		inline bool IsInCategory(EventCategory category) {
+		inline bool IsInCategory(EventCategory category) 
+		{
 			return GetCategoryFlags() & category;
 		}
 	};
@@ -58,7 +61,8 @@ namespace Hazel {
 			: m_event(event) {}
 
 		template<typename T>
-		bool Dispatch(EventFn<T> func) {
+		bool Dispatch(EventFn<T> func) 
+		{
 			if (m_event.GetEventType() == T::GetStaticType())
 			{
 				m_event.handled = func(*(T*)&m_event);

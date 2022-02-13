@@ -2,7 +2,8 @@
 
 #include "Event.h"
 
-namespace Hazel {
+namespace Hazel 
+{
 
 	class HAZEL_API WindowResizeEvent : public Event 
 	{
@@ -13,7 +14,8 @@ namespace Hazel {
 		inline unsigned int GetWidth() const { return m_width; }
 		inline unsigned int GetHeight() const { return m_height; }
 
-		std::string ToString() const override {
+		std::string ToString() const override 
+		{
 			std::stringstream ss;
 			ss << "WindowResizeEvent:" << m_width << "," << m_height;
 			return ss.str();

@@ -4,7 +4,8 @@
 
 extern Hazel::Application* Hazel::CreateApplicaton();
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv) 
+{
 	
 	Hazel::Log::Init();
 	auto app = Hazel::CreateApplicaton();

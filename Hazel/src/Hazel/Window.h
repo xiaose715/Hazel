@@ -5,9 +5,11 @@
 #include "Core.h"
 #include "Hazel/Events/Event.h"
 
-namespace Hazel {
+namespace Hazel 
+{
 
-	struct WindowProps {
+	struct WindowProps 
+	{
 		std::string title;
 		unsigned int width;
 		unsigned int height;

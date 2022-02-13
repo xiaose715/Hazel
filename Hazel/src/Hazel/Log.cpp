@@ -3,12 +3,14 @@
 
 #include "spdlog/sinks/stdout_color_sinks.h"
 
-namespace Hazel {
+namespace Hazel 
+{
 
 	std::shared_ptr<spdlog::logger> Log::s_coreLogger;
 	std::shared_ptr<spdlog::logger> Log::s_clientLogger;
 
-	void Log::Init() {
+	void Log::Init() 
+	{
 		spdlog::set_pattern("%^[%T] %n: %v%$");
 
 		s_coreLogger = spdlog::stdout_color_mt("HAZEL");

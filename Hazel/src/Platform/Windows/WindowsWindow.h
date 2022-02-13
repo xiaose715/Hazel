@@ -4,7 +4,8 @@
 
 #include <GLFW/glfw3.h>
 
-namespace Hazel {
+namespace Hazel 
+{
 
 	class WindowsWindow : public Window
 	{
@@ -31,7 +32,8 @@ namespace Hazel {
 	private:
 		GLFWwindow* m_window;
 
-		struct WindowData {
+		struct WindowData 
+		{
 			std::string title;
 			unsigned int width, height;
 			bool isVSync;

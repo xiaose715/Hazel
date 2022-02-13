@@ -5,23 +5,26 @@ class ExampleLayer : public Hazel::Layer
 {
 public:
 	ExampleLayer() 
-		:Layer("Example") {
+		:Layer("Example") 
+	{
 	
 	}
 
-	void OnUpdate() override {
-		if (Hazel::Input::IsKeyPressed(HZ_KEY_TAB)) {
+	void OnUpdate() override 
+	{
+		if (Hazel::Input::IsKeyPressed(HZ_KEY_TAB)) 
 			HZ_INFO("TAB PRESSED!");
-		}
 	}
 
-	virtual void OnImGuiRender() override {
+	virtual void OnImGuiRender() override 
+	{
 		ImGui::Begin("Example");
 		ImGui::Text("Test");
 		ImGui::End();
 	}
 
-	void OnEvent(Hazel::Event& event) override {
+	void OnEvent(Hazel::Event& event) override 
+	{
 
 	}
 
@@ -30,15 +33,18 @@ public:
 class Sandbox : public Hazel::Application 
 {
 public:
-	Sandbox() {
+	Sandbox() 
+	{
 		PushLayer(new ExampleLayer());
 	}
 
-	~Sandbox() {
+	~Sandbox() 
+	{
 	
 	}
 };
 
-Hazel::Application* Hazel::CreateApplicaton() {
+Hazel::Application* Hazel::CreateApplicaton() 
+{
 	return new Sandbox();
 }

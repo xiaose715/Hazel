@@ -2,7 +2,8 @@
 
 #include "Layer.h"
 
-namespace Hazel {
+namespace Hazel 
+{
 
 	class LayerStack
 	{
